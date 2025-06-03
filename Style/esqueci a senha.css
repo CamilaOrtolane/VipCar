@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+body {
+margin: 0;
+font-family: 'Poppins', sans-serif;
+background: url("../img/bg-login.png");
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+.login-container {
+background-color: white;
+padding: 40px;
+border-radius: 10px;
+box-shadow: 0 0 20px rgba(0,0,0,0.1);
+width: 500px;
+box-sizing: border-box;
+}
+form {
+width: 100%;
+display: flex;
+flex-direction: column;
+}
+.logodiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+width: 290px;
+margin-bottom: 10px;
+}
+.input-group {
+width: 431px;
+text-align: left;
+align-items: center;
+}
+.input-group label {
+display: block;
+margin-bottom: 5px;
+color: #333;
+font-size: 14px;
+}
+.input-group input {
+width: 100%;
+padding: 10px;
+border: 2px solid #333;
+border-radius: 20px;
+background-color: #fff;
+box-sizing: border-box;
+
+}
+
+.btn-redefinir {
+background-color: #f58220;
+color: white;
+border: none;
+width: 431px;
+padding: 10px;
+border-radius: 20px;
+font-weight: bold;
+font-size: 22px;
+cursor: pointer;
+margin-top: 70px;
+margin-bottom: 20px;
+}
+.input-group p{
+    margin-top: 30px;
+    font-size: 14px;
+    text-align: center;
+}
+

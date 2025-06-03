@@ -1,0 +1,121 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    }
+    .topbar {
+    background-color: white;
+    color: white;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+    margin-left: -25px;
+    height: 70.2px;
+    }
+    .menu a {
+  margin-left: 30px;
+  font-size: 22px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  border-bottom: 3px solid #000;
+}
+
+.menu a:hover {
+  color: #FFA500;
+  border-bottom: 3px solid #FFA500;
+}
+
+.container {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.menu{
+    margin-left: 880px;
+}
+.container2 {
+  padding: 40px;
+  margin-top: 70px;
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.filtros input {
+  padding: 10px;
+  border: 1px solid orange;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.btn-buscar {
+  padding: 10px 20px;
+  background-color: orange;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.catalogo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-carro {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.card-carro img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card-carro h3 {
+  margin: 10px 0 5px;
+}
+
+.card-carro p {
+  margin: 0 0 10px;
+  font-weight: bold;
+}
+
+.btn-alugar {
+  background-color: orange;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+}

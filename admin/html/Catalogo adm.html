@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Clientes</title>
+  <link rel="stylesheet" href="../Style/catalogo adm.css">
+</head>
+<body>
+  <header>
+    <div class="menu-icon" id="menu-toggle">☰</div>
+    
+    <nav>
+      <a href="home adm.html">Início</a>
+      <a href="perfil adm.html">Perfil</a>
+    </nav>
+  </header>
+
+<aside class="sidebar" id="sidebar">
+  <div class="close-btn" id="close-sidebar">✖</div>
+  <ul>
+    <li><a href="Tabela clientes.html">Consultar Clientes</a></li>
+    <li><a href="Tabela Veiculos.html">Consultar Veículos</a></li>
+    <li><a href="tabela locação.html">Consultar Locações</a></li>
+    <li><a href="tabela Local.html">Consultar Locadoras</a></li>
+    <li><a href="Catalogo adm.html">Catálogo</a></li>
+  </ul>
+</aside>
+<div class="overlay" id="overlay"></div>
+
+  <main>
+    <h2>Catálogo</h2>
+    <div class="filtros">
+      <input type="text" placeholder="Nome ou modelo">
+      <input type="text" placeholder="Faixa de preço">
+      <button class="btn buscar">Buscar</button>
+      <button class="btn cadastrar">Cadastrar veículo</button>
+    </div>
+    <div class="cards-container">
+    
+    </div>
+  </main>
+
+  <script src="../js/Veiculos.js"></script>
+</body>
+</html>

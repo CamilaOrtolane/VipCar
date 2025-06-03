@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Local da Locadora</title>
+  <link rel="stylesheet" href="../Style/edit_local.css">
+  <script src="../js/home adm.js"></script>
+</head>
+<body>
+  <header>
+    <div class="menu-icon" id="menu-toggle">☰</div>
+    <nav>
+      <a href="home adm.html">Início</a>
+      <a href="perfil adm.html">Perfil</a>
+    </nav>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="close-btn" id="close-sidebar">✖</div>
+    <ul>
+      <li><a href="Tabela_clientes.php">Consultar Clientes</a></li>
+      <li><a href="Tabela_veiculos.php">Consultar Veículos</a></li>
+      <li><a href="Tabela_locacao.php">Consultar Locações</a></li>
+      <li><a href="Tabela_Local.php">Consultar Locadoras</a></li>
+      <li><a href="Catalogo adm.html">Catálogo</a></li>
+    </ul>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <h2>Cadastrar Local da Locadora</h2>
+
+  <form action="../../php/local/cadastrar_local.php" method="post">
+    <div class="form-grid">
+      <div>
+        <label for="rua">Logradouro:</label>
+        <input type="text" id="rua" name="rua" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" placeholder="UF" maxlength="2" required>
+      </div>
+      <div>
+        <label for="numero">Número:</label>
+        <input type="number" id="numero" name="numero" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label for="horario_abertura">Horário de abertura:</label>
+        <input type="time" id="horario_abertura" name="horario_abertura" required>
+      </div>
+      <div>
+        <label for="horario_fechamento">Horário de fechamento:</label>
+        <input type="time" id="horario_fechamento" name="horario_fechamento" required>
+      </div>
+    </div>
+    <div class="button-group">
+      <a href="Tabela_Local.php"><button type="button" class="btn cancel">Cancelar</button></a>
+      <button type="submit" class="btn save">Salvar</button>
+    </div>
+  </form>
+
+  <script src="../js/Veiculos.js"></script>
+</body>
+</html>
+

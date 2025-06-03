@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Clientes</title>
+  <link rel="stylesheet" href="../Style/edit_veiculos.css">
+  <script src="../js/Veiculos.js"></script>
+</head>
+<body>
+  <header>
+    <div class="menu-icon" id="menu-toggle">☰</div>
+    
+    <nav>
+      <a href="home adm.html">Início</a>
+      <a href="perfil adm.html">Perfil</a>
+    </nav>
+  </header>
+
+<aside class="sidebar" id="sidebar">
+  <div class="close-btn" id="close-sidebar">✖</div>
+  <ul>
+    <li><a href="Tabela clientes.html">Consultar Clientes</a></li>
+    <li><a href="Tabela Veiculos.html">Consultar Veículos</a></li>
+    <li><a href="tabela locação.html">Consultar Locações</a></li>
+    <li><a href="tabela Local.html">Consultar Locadoras</a></li>
+    <li><a href="Catalogo adm.html">Catálogo</a></li>
+  </ul>
+</aside>
+<div class="overlay" id="overlay"></div>
+<h2>Cadastrar Veiculos</h2>
+<form action="../../php/Veiculos/cadastrar_veiculo.php" method="POST" enctype="multipart/form-data">
+    <div class="form-grid">
+      <div>
+        <label>Modelo</label>
+        <input type="text" name="modelo" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label>Placa</label>
+        <input type="text" name="placa" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label>Chassi</label>
+        <input type="text" name="chassi" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label>Marca</label>
+        <input type="text" name="marca" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label>Capacidade</label>
+        <input type="number" name="capacidade" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label>Bagageiro</label>
+        <input type="text" name="bagageiro" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label>Quilômetros Rodados</label>
+        <input type="number" name="km_rodados" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label>Câmbio</label>
+        <select name="cambio" required>
+          <option value="">Selecione</option>
+          <option value="Automatico">Automático</option>
+          <option value="Manual">Manual</option>
+        </select>
+      </div>
+      <div>
+        <label>Ano de Fabricação</label>
+        <input type="number" name="ano_fabricacao" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label>Última revisão</label>
+        <input type="date" name="ultima_revisao" required>
+      </div>
+      <div>
+        <label>Renavam</label>
+        <input type="text" name="renavam" placeholder="Digite aqui..." required>
+      </div>
+      <div>
+        <label>Disponibilidade</label>
+        <select name="disponibilidade_status" required>
+          <option value="">Selecione</option>
+          <option value="Disponivel">Disponível</option>
+          <option value="Nao Disponivel">Não Disponível</option>
+        </select>
+      </div>
+      <div class="full-width">
+        <label>Anexar foto</label>
+        <input type="file" name="imagem" accept="image/*" required>
+      </div>
+      <div class="full-width">
+        <label>Nome para Exibição</label>
+        <input type="text" name="nome" placeholder="Ex: Fiat Uno 1.0 - 2020" required>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="btn cancel">Cancelar</button>
+      <button type="submit" class="btn save">Salvar</button>
+    </div>
+  </form>
+
+
+</body>
+</html>

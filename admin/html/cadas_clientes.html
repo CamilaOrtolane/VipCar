@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadatrar cliente</title>
+  <link rel="stylesheet" href="../Style/Cadastrar_cliente.css">
+  <script src="../js/home adm.js"></script>
+</head>
+<body>
+  </head>
+<body>
+  <header>
+    <div class="menu-icon" id="menu-toggle">☰</div>
+    
+    <nav>
+      <a href="home adm.html">Início</a>
+      <a href="perfil adm.html">Perfil</a>
+    </nav>
+  </header>
+
+<aside class="sidebar" id="sidebar">
+  <div class="close-btn" id="close-sidebar">✖</div>
+  <ul>
+    <li><a href="Tabela clientes.html">Consultar Clientes</a></li>
+    <li><a href="Tabela Veiculos.html">Consultar Veículos</a></li>
+    <li><a href="tabela locação.html">Consultar Locações</a></li>
+    <li><a href="tabela Local.html">Consultar Locadoras</a></li>
+    <li><a href="Catalogo adm.html">Catálogo</a></li>
+  </ul>
+</aside>
+<div class="overlay" id="overlay"></div>
+
+<div class="container">
+  <form action="../../php/Cliente/cadastrar_cliente.php" method="post">
+    <form class="Cadastro">
+      <div class="form-group">
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite aqui..." name="nome"/>
+      </div>
+      <div class="form-group">
+        <label>CPF:</label>
+        <input type="text" placeholder="Digite aqui..." name="cpf"/>
+      </div>
+          <div class="invi"></div>
+      <div class="form-group">
+        <label>Data de Nascimento:</label>
+        <input type="date" name="data_nascimento"/>
+      </div>
+      <div class="form-group">
+        <label>Telefone:</label>
+        <input type="text" placeholder="Digite aqui..." name="telefone"/>
+      </div>
+      <div class="form-group">
+        <label>CNH:</label>
+        <input type="text" placeholder="Digite aqui..." name="cnh"/>
+      </div>
+        <div class="invi"></div>
+      <div class="form-group">
+        <label class=>Logradouro:</label> 
+        <input type="text" placeholder="Digite aqui..." name="rua"/>
+      </div>
+      <div class="form-group">
+        <label>Bairro:</label>
+        <input type="text" placeholder="Digite aqui..." name="bairro"/>
+        
+      </div>
+          <div class="invi"></div>
+      <div class="form-group">
+        <label>CEP:</label>
+        <input type="text" placeholder="Digite aqui..." name="cep"/>
+      </div>
+      <div class="form-group">
+        <label>Cidade:</label>
+        <input type="text" placeholder="Digite aqui..." name="cidade"/>
+      </div>
+      <div class="form-group">
+        <label>Estado:</label>
+        <input type="text" placeholder="Digite aqui..." name="estado"/>
+      </div>
+      <div class="invi"></div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" placeholder="Digite aqui..." name="email"/>
+      </div>
+      <div class="invi"></div>
+      <div class="form-group-full botoes">
+        <a href="Tabela_clientes.php"><button type="button" class="btn cancelar">Cancelar</button></a>
+        <button type="submit" class="btn entrar">Entrar</button>
+  </form>
+    
+
+</body>
+</html>

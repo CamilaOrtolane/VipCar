@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Realizar Locação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Style/alugar.css">
+  <script src="../js/alugar.js"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <img src="../img/logo.png" alt="Logo" class="logo">
+    <nav class="menu">
+      <a href="home.html">Início</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="reserva.html">Reservas</a>
+      <a href="login.html">Perfil</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="container2">
+<h1>Realizar Locação</h1>
+
+    <form id="form-locacao">
+      <div class="form-group">
+        <label for="veiculo">Veículo</label>
+        <select id="veiculo" name="veiculo">
+          <option value="" disabled selected>Selecione</option>
+          <option value="Onix Plus" data-img="../img/Onix vermelho" data-preco="230">Onix Plus</option>
+
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="valorDiaria">Valor da Diária</label>
+        <input type="text" id="valorDiaria" name="valorDiaria" placeholder="R$" readonly>
+      </div>
+
+      <div class="form-group">
+        <label for="valorTotal">Valor Total</label>
+        <input type="text" id="valorTotal" name="valorTotal" placeholder="R$" readonly>
+      </div>
+
+
+      <div class="car-image">
+        <img id="carImg" src="../img/Onix vermelho.png" alt="Carro Selecionado">
+      </div>
+
+
+      <div class="form-group">
+        <label for="dataRetirada">Data de Retirada:</label>
+        <input type="date" id="dataRetirada" name="dataRetirada">
+      </div>
+
+      <div class="form-group">
+        <label for="dataEntrega">Data de Entrega:</label>
+        <input type="date" id="dataEntrega" name="dataEntrega">
+      </div>
+
+      <div class="form-group">
+        <label for="horaRetirada">Horário de Retirada:</label>
+        <input type="time" id="horaRetirada" name="horaRetirada">
+      </div>
+
+      <div class="form-group">
+        <label for="horaEntrega">Horário de Entrega:</label>
+        <input type="time" id="horaEntrega" name="horaEntrega">
+      </div>
+
+      <div class="form-group full">
+        <label for="localRetirada">Local de Retirada:</label>
+        <input type="text" id="localRetirada" name="localRetirada" placeholder="Digite aqui…">
+      </div>
+
+      <div class="form-group full">
+        <label for="localDevolucao">Local de Devolução:</label>
+        <input type="text" id="localDevolucao" name="localDevolucao" placeholder="Digite aqui…">
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn btn-cancelar" onclick="history.back()">Cancelar ✖</button>
+        <button type="submit" class="btn btn-alugar">Alugar ➤</button>
+      </div>
+    </form>
+    </div>
+  </main>
+</body>
+</html>

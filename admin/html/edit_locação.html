@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Clientes</title>
+  <link rel="stylesheet" href="../Style/edit_locação.css">
+</head>
+<body>
+  <header>
+    <div class="menu-icon" id="menu-toggle">☰</div>
+    
+    <nav>
+      <a href="home adm.html">Início</a>
+      <a href="perfil adm.html">Perfil</a>
+    </nav>
+  </header>
+
+<aside class="sidebar" id="sidebar">
+  <div class="close-btn" id="close-sidebar">✖</div>
+  <ul>
+    <li><a href="Tabela clientes.html">Consultar Clientes</a></li>
+    <li><a href="Tabela Veiculos.html">Consultar Veículos</a></li>
+    <li><a href="tabela locação.html">Consultar Locações</a></li>
+    <li><a href="tabela Local.html">Consultar Locadoras</a></li>
+    <li><a href="Catalogo adm.html">Catálogo</a></li>
+  </ul>
+</aside>
+<div class="overlay" id="overlay"></div>
+
+  <h2>Editar locação</h2>
+  <form>
+    <div class="form-grid">
+      <div>
+        <label for="cliente">Cliente:</label>
+        <select id="cliente" name="cliente">
+          <option value="">Selecione...</option>
+        </select>
+      </div>
+      <div>
+        <label for="veiculo">Veículo:</label>
+        <input type="text" id="veiculo" name="veiculo" placeholder="Digite aqui...">
+      </div>
+      <div>
+        <label for="data-retirada">Data de Retirada:</label>
+        <input type="text" id="data-retirada" name="data-retirada" placeholder="Digite aqui...">
+      </div>
+      <div>
+        <label for="data-entrada">Data de entrada:</label>
+        <input type="text" id="data-entrada" name="data-entrada" placeholder="Digite aqui...">
+      </div>
+      <div>
+        <label for="hora-retirada">Horário de Retirada:</label>
+        <input type="text" id="hora-retirada" name="hora-retirada" placeholder="Digite aqui...">
+      </div>
+      <div>
+        <label for="hora-entrada">Horário de entrada:</label>
+        <input type="text" id="hora-entrada" name="hora-entrada" placeholder="Digite aqui...">
+      </div>
+      <div>
+        <label for="local-retirada">Local de Retirada:</label>
+        <input type="text" id="local-retirada" name="local-retirada" placeholder="Digite aqui...">
+      </div>
+      <div>
+        <label for="local-devolucao">Local de Devolução:</label>
+        <input type="text" id="local-devolucao" name="local-devolucao" placeholder="Digite aqui...">
+      </div>
+      <div>
+        <label for="valor-diaria">Valor da Diária:</label>
+        <input type="text" id="valor-diaria" name="valor-diaria" placeholder="Digite aqui...">
+      </div>
+      <div>
+        <label for="valor-total">Valor Total:</label>
+        <input type="text" id="valor-total" name="valor-total" placeholder="Digite aqui...">
+      </div>
+    </div>
+    <div class="button-group">
+      <button type="button" class="btn cancel">Cancelar</button>
+      <button type="submit" class="btn save">Salvar</button>
+    </div>
+  </form>
+
+  <script src="../js/Veiculos.js"></script>
+</body>
+</html>
