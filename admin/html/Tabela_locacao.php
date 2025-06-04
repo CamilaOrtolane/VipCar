@@ -47,37 +47,38 @@ try {
   </div>
 
   <table>
-      <tr>
-          <th>ID</th>
-          <th>ID Cliente</th>
-          <th>ID Veículo</th>
-          <th>Data Retirada</th>
-          <th>Data Devolução</th>
-          <th>Valor Total</th>
-          <th>Ações</th>
-      </tr>
-      <?php
-      if (count($locacoes) > 0) {
-          foreach ($locacoes as $locacao) {
-              echo "<tr>";
-              echo "<td>" . htmlspecialchars($locacao['id_loc']) . "</td>";
-              echo "<td>" . htmlspecialchars($locacao['id_cli']) . "</td>";
-              echo "<td>" . htmlspecialchars($locacao['id_vei']) . "</td>";
-              echo "<td>" . htmlspecialchars($locacao['data_retirada']) . "</td>";
-              echo "<td>" . htmlspecialchars($locacao['data_devolucao']) . "</td>";
-              echo "<td>R$ " . number_format($locacao['valor_total'], 2, ',', '.') . "</td>";
-              echo "<td>
-                      <a href='visu_locacao.php?id_loc=" . $locacao['id_loc'] . "' class='aTabela'>Visualizar</a> |
-                      <a href='edit_locacao.php?id_loc=" . $locacao['id_loc'] . "' class='aTabela'>Editar</a> |
-                      <a href='delete_locacao.php?id_loc=" . $locacao['id_loc'] . "' onclick=\"return confirm('Tem certeza que deseja excluir?');\" class='aTabela'>Excluir</a>
-                    </td>";
-              echo "</tr>";
-          }
-      } else {
-          echo "<tr><td colspan='7'>Nenhuma locação encontrada.</td></tr>";
-      }
-      ?>
-  </table>
+    <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Veículo</th>
+        <th>Data Retirada</th>
+        <th>Data Devolução</th>
+        <th>Valor Total</th>
+        <th>Ações</th>
+    </tr>
+    <?php
+    if (count($locacoes) > 0) {
+        foreach ($locacoes as $locacao) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($locacao['id']) . "</td>";
+            echo "<td>" . htmlspecialchars($locacao['nome_cliente']) . "</td>";
+            echo "<td>" . htmlspecialchars($locacao['modelo_veiculo']) . "</td>";
+            echo "<td>" . htmlspecialchars($locacao['data_saida']) . "</td>";
+            echo "<td>" . htmlspecialchars($locacao['data_entrada']) . "</td>";
+            echo "<td>R$ " . number_format($locacao['valor_total'], 2, ',', '.') . "</td>";
+            echo "<td>
+                    <a href='../../admin/hmtl/visu_locacao.php?id=" . $locacao['id'] . "' class='aTabela'>Visualizar</a> |
+                    <a href='../../admin/hmt/edit_locacao.php?id_loc=" . $locacao['id'] . "' class='aTabela'>Editar</a> |
+                    <a href='../../admin/hmt/delete_locacao.php?id_loc=" . $locacao['id'] . "' onclick=\"return confirm('Tem certeza que deseja excluir?');\" class='aTabela'>Excluir</a>
+                  </td>";
+            echo "</tr>";
+        }
+    } else {
+        echo "<tr><td colspan='7'>Nenhuma locação encontrada.</td></tr>";
+    }
+    ?>
+</table>
+
 </main>
 
 <script src="../js/Clientes.js"></script>

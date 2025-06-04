@@ -32,7 +32,7 @@ try {
     <ul>
       <li><a href="Tabela_clientes.php">Consultar Clientes</a></li>
       <li><a href="Tabela_veiculos.php">Consultar Veículos</a></li>
-      <li><a href="tabela locação.html">Consultar Locações</a></li>
+      <li><a href="../../admin/html/Tabela_locacao.php">Consultar Locações</a></li>
       <li><a href="Tabela_Local.php">Consultar Locadoras</a></li>
       <li><a href="Catalogo adm.html">Catálogo</a></li>
     </ul>

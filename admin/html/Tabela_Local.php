@@ -30,10 +30,10 @@ try {
   <aside class="sidebar" id="sidebar">
     <div class="close-btn" id="close-sidebar">✖</div>
     <ul>
-      <li><a href="Tabela_clientes.php">Consultar Clientes</a></li>
-      <li><a href="Tabela_veiculos.php">Consultar Veículos</a></li>
-      <li><a href="tabela_locacao.php">Consultar Locações</a></li>
-      <li><a href="tabela_Local.php">Consultar Locadoras</a></li>
+      <li><a href="../../admin/html/Tabela_clientes.php">Consultar Clientes</a></li>
+      <li><a href="../../admin/html/Tabela_veiculos.php">Consultar Veículos</a></li>
+      <li><a href="../../admin/html/Tabela_locacao.php">Consultar Locações</a></li>
+      <li><a href="../../admin/html/Tabela_Local.php">Consultar Locadoras</a></li>
       <li><a href="Catalogo adm.html">Catálogo</a></li>
     </ul>
   </aside>
@@ -80,6 +80,6 @@ try {
     </table>
   </main>
 
-  <script src="../js/Veiculos.js"></script>
+  <script src="../../admin/js/Veiculos.js"></script>
 </body>
 </html>
