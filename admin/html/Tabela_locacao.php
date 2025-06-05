@@ -10,6 +10,31 @@ try {
     echo "Erro na consulta: " . $e->getMessage();
     exit;
 }
+
+require_once('../../php/config/Database.php');
+
+$db = (new Database())->getConnection();
+
+try {
+    $stmt = $db->query("
+        SELECT 
+            l.id,
+            l.data_saida,
+            l.data_entrada,
+            l.valor_total,
+            l.status,
+            c.nome AS nome_cliente,
+            v.modelo AS modelo_veiculo
+        FROM locacao l
+        INNER JOIN cliente c ON l.id_cliente_fk = c.id_cli
+        INNER JOIN veiculo v ON l.id_veiculo_fk = v.id_vei
+    ");
+    $locacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Erro na consulta: " . $e->getMessage();
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -23,7 +48,7 @@ try {
 <header>
   <div class="menu-icon" id="menu-toggle">☰</div>
   <nav>
-    <a href="home adm.html">Início</a>
+    <a href="home_adm.php">Início</a>
     <a href="perfil adm.html">Perfil</a>
   </nav>
 </header>
@@ -31,11 +56,11 @@ try {
 <aside class="sidebar" id="sidebar">
   <div class="close-btn" id="close-sidebar">✖</div>
   <ul>
-    <li><a href="Tabela_clientes.php">Clientes</a></li>
-    <li><a href="Tabela_Veiculos.php">Veículos</a></li>
-    <li><a href="Tabela_locacao.php">Locações</a></li>
-    <li><a href="Tabela_Local.php">Locadoras</a></li>
-    <li><a href="Catalogo_adm.html">Catálogo</a></li>
+    <li><a href="../../admin/html/Tabela_clientes.php">Consultar Clientes</a></li>
+    <li><a href="../../admin/html/Tabela_Veiculos.php">Consultar Veículos</a></li>
+    <li><a href="../../admin/html/Tabela_locacao.php">Consultar Locações</a></li>
+    <li><a href="../../admin/html/Tabela_Local.php">Consultar Locadoras</a></li>
+    <li><a href="../../admin/html/Catalogo_adm.html">Catálogo</a></li>
   </ul>
 </aside>
 <div class="overlay" id="overlay"></div>
@@ -54,6 +79,7 @@ try {
         <th>Data Retirada</th>
         <th>Data Devolução</th>
         <th>Valor Total</th>
+        <th>Status</th>
         <th>Ações</th>
     </tr>
     <?php
@@ -66,10 +92,11 @@ try {
             echo "<td>" . htmlspecialchars($locacao['data_saida']) . "</td>";
             echo "<td>" . htmlspecialchars($locacao['data_entrada']) . "</td>";
             echo "<td>R$ " . number_format($locacao['valor_total'], 2, ',', '.') . "</td>";
+            echo "<td>" . htmlspecialchars($locacao['status']) . "</td>";
             echo "<td>
-                    <a href='../../admin/hmtl/visu_locacao.php?id=" . $locacao['id'] . "' class='aTabela'>Visualizar</a> |
-                    <a href='../../admin/hmt/edit_locacao.php?id_loc=" . $locacao['id'] . "' class='aTabela'>Editar</a> |
-                    <a href='../../admin/hmt/delete_locacao.php?id_loc=" . $locacao['id'] . "' onclick=\"return confirm('Tem certeza que deseja excluir?');\" class='aTabela'>Excluir</a>
+                    <a href='../../admin/html/visu_locacao.php?id=" . $locacao['id'] . "' class='aTabela'>Visualizar</a> |
+                    <a href='../../admin/html/edit_locacao.php?id=" . $locacao['id'] . "' class='aTabela'>Editar</a> |
+                    <a href='../../admin/html/delete_locacao.php?id=" . $locacao['id'] . "' onclick=\"return confirm('Tem certeza que deseja excluir?');\" class='aTabela'>Excluir</a>
                   </td>";
             echo "</tr>";
         }

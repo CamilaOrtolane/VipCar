@@ -22,7 +22,7 @@ try {
   <header>
     <div class="menu-icon" id="menu-toggle">☰</div>
     <nav>
-      <a href="home adm.html">Início</a>
+      <a href="home_adm.php">Início</a>
       <a href="perfil adm.html">Perfil</a>
     </nav>
   </header>

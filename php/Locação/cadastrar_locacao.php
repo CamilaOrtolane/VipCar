@@ -6,26 +6,6 @@ require_once('../../php/config/Database.php');
 
 $db = (new Database())->getConnection();
 
-try {
-    $stmt = $db->query("
-        SELECT 
-            l.id,
-            l.data_saida,
-            l.data_entrada,
-            l.valor_total,
-            c.nome AS nome_cliente,
-            v.modelo AS modelo_veiculo
-        FROM locacao l
-        JOIN cliente c ON l.id_cliente_fk = c.id_cli
-        JOIN veiculo v ON l.id_veiculo_fk = v.id_vei
-    ");
-    
-    $locacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Erro na consulta: " . $e->getMessage();
-    exit;
-}
-
 
 try {
     // Instanciar a classe Locacao

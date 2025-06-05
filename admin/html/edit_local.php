@@ -30,7 +30,7 @@ if (!$dados) {
   <header>
     <div class="menu-icon" id="menu-toggle">☰</div>
     <nav>
-      <a href="home adm.html">Início</a>
+      <a href="home_adm.php">Início</a>
       <a href="perfil adm.html">Perfil</a>
     </nav>
   </header>
@@ -38,11 +38,11 @@ if (!$dados) {
   <aside class="sidebar" id="sidebar">
     <div class="close-btn" id="close-sidebar">✖</div>
     <ul>
-      <li><a href="Tabela clientes.html">Consultar Clientes</a></li>
-      <li><a href="Tabela Veiculos.html">Consultar Veículos</a></li>
-      <li><a href="tabela locação.html">Consultar Locações</a></li>
-      <li><a href="tabela Local.html">Consultar Locadoras</a></li>
-      <li><a href="Catalogo adm.html">Catálogo</a></li>
+      <li><a href="../../admin/html/Tabela_clientes.php">Consultar Clientes</a></li>
+      <li><a href="../../admin/html/Tabela_Veiculos.php">Consultar Veículos</a></li>
+      <li><a href="../../admin/html/Tabela_locacao.php">Consultar Locações</a></li>
+      <li><a href="../../admin/html/Tabela_Local.php">Consultar Locadoras</a></li>
+      <li><a href="../../admin/html/Catalogo_adm.html">Catálogo</a></li>
     </ul>
   </aside>
 

@@ -35,11 +35,11 @@ create table cliente (
 );
 create table local_locadora (
     id_loc int auto_increment primary key unique,
-    cidade varchar(100),
+    cidade varchar(100), 
     estado varchar(2),
     cep varchar(10),
-    rua varchar(255),
-    bairro varchar(100),
+    rua varchar(255), 
+    bairro varchar(100), 
     numero int,
     horario_abertura time,
     horario_fechamento time
@@ -47,19 +47,21 @@ create table local_locadora (
 
 create table locacao (
     id int auto_increment primary key unique,
-    data_entrada date,
-    data_saida date,
-    horario_entrada time,
-    horario_saida time,
-    valor_por_dia double,
-    valor_total double,
+    data_entrada date, 
+    data_saida date, 
+    horario_entrada time, 
+    horario_saida time, 
+    valor_por_dia DECIMAL(10,2),
+    valor_total DECIMAL(10,2),
     local_retirada_cidade varchar(100),
     local_entrega varchar(100),
-  	status varchar(100),
- 	id_cliente_fk int,
-  	id_veiculo_fk int,
-  	id_local_locadora_fk int,
-  	foreign key (id_cliente_fk) references cliente(id_cli),
-  	foreign key (id_veiculo_fk) references veiculo(id_vei),
-    foreign key (id_local_locadora_fk) references local_locadora(id_loc)
+	status varchar(100),
+	id_cliente_fk int, 
+	id_veiculo_fk int, 
+	id_local_retirada INT,
+    id_local_devolucao INT,
+	foreign key (id_cliente_fk) references cliente(id_cli),
+	foreign key (id_veiculo_fk) references veiculo(id_vei),
+    foreign key (id_local_retirada) references local_locadora(id_loc),
+    foreign key (id_local_devolucao) references local_locadora(id_loc)
 );
