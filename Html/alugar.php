@@ -10,8 +10,8 @@ $imagem = $_GET['imagem'] ?? '';
 
 $clientes = $conn->query("SELECT id_cli, nome FROM cliente");
 $veiculos = $conn->query("SELECT id_vei, modelo FROM veiculo");
-$locadoras_retirada = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora");
-$locadoras_devolucao = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora");
+$id_local_retirada = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora");
+$id_local_devolucao = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora");
 
 if (!$id_veiculo_fk) {
     die('Veículo não especificado.');
@@ -106,7 +106,7 @@ if (!$id_veiculo_fk) {
       <label for="id_local_retirada">Local de Retirada:</label>
       <select id="id_local_retirada" name="id_local_retirada" required>
         <option value="">Selecione o local</option>
-        <?php while ($loc = $locadoras_retirada->fetch(PDO::FETCH_ASSOC)) { ?>
+        <?php while ($loc = $id_local_retirada->fetch(PDO::FETCH_ASSOC)) { ?>
           <option value="<?= $loc['id_loc'] ?>">
             <?= htmlspecialchars($loc['rua']) ?> - <?= htmlspecialchars($loc['cidade']) ?>
           </option>
@@ -119,7 +119,7 @@ if (!$id_veiculo_fk) {
       <label for="id_local_devolucao">Local de Devolução:</label>
       <select id="id_local_devolucao" name="id_local_devolucao" required>
         <option value="">Selecione o local</option>
-        <?php while ($loc = $locadoras_devolucao->fetch(PDO::FETCH_ASSOC)) { ?>
+        <?php while ($loc = $id_local_devolucao->fetch(PDO::FETCH_ASSOC)) { ?>
           <option value="<?= $loc['id_loc'] ?>">
             <?= htmlspecialchars($loc['rua']) ?> - <?= htmlspecialchars($loc['cidade']) ?>
           </option>

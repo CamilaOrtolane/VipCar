@@ -18,8 +18,6 @@ try {
     $locacao->horario_saida = $_POST['horario_saida'];
     $locacao->valor_por_dia = $_POST['valor_por_dia'];
     $locacao->valor_total = $_POST['valor_total'];
-    $locacao->local_retirada_cidade = $_POST['local_retirada_cidade'];
-    $locacao->local_entrega = $_POST['local_entrega'];
     $locacao->status = $_POST['status'];
     $locacao->id_cliente_fk = $_POST['id_cliente_fk'];
     $locacao->id_veiculo_fk = $_POST['id_veiculo_fk'];
