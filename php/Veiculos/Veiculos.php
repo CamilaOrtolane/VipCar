@@ -6,6 +6,7 @@ class Veiculo {
     public $id_vei;
     public $nome;
     public $disponibilidade_status;
+    public $preco_dia;
     public $capacidade;
     public $bagageiro;
     public $cambio;
@@ -32,13 +33,14 @@ class Veiculo {
 
     public function criar() {
         $query = "INSERT INTO " . $this->table . " 
-            (nome, disponibilidade_status, capacidade, bagageiro, cambio, imagem, placa, ano_fabricacao, modelo, chassi, renavam, marca, km_rodados, ultima_revisao)
+            (nome, disponibilidade_status, preco_dia, capacidade, bagageiro, cambio, imagem, placa, ano_fabricacao, modelo, chassi, renavam, marca, km_rodados, ultima_revisao)
             VALUES 
-            (:nome, :disponibilidade_status, :capacidade, :bagageiro, :cambio, :imagem, :placa, :ano_fabricacao, :modelo, :chassi, :renavam, :marca, :km_rodados, :ultima_revisao)";
+            (:nome, :disponibilidade_status, :preco_dia, :capacidade, :bagageiro, :cambio, :imagem, :placa, :ano_fabricacao, :modelo, :chassi, :renavam, :marca, :km_rodados, :ultima_revisao)";
         
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':nome', $this->nome);
         $stmt->bindParam(':disponibilidade_status', $this->disponibilidade_status);
+        $stmt->bindParam(':preco_dia', $this->preco_dia);
         $stmt->bindParam(':capacidade', $this->capacidade);
         $stmt->bindParam(':bagageiro', $this->bagageiro);
         $stmt->bindParam(':cambio', $this->cambio);
@@ -57,7 +59,7 @@ class Veiculo {
 
     public function editar() {
         $query = "UPDATE " . $this->table . "
-                  SET nome = :nome, disponibilidade_status = :disponibilidade_status, capacidade = :capacidade, 
+                  SET nome = :nome, disponibilidade_status = :disponibilidade_status, preco_dia = :preco_dia, capacidade = :capacidade, 
                       bagageiro = :bagageiro, cambio = :cambio, imagem = :imagem, placa = :placa, 
                       ano_fabricacao = :ano_fabricacao, modelo = :modelo, chassi = :chassi, 
                       renavam = :renavam, marca = :marca, km_rodados = :km_rodados, ultima_revisao = :ultima_revisao
@@ -66,6 +68,7 @@ class Veiculo {
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':nome', $this->nome);
         $stmt->bindParam(':disponibilidade_status', $this->disponibilidade_status);
+        $stmt->bindParam(':preco_dia', $this->preco_dia);
         $stmt->bindParam(':capacidade', $this->capacidade);
         $stmt->bindParam(':bagageiro', $this->bagageiro);
         $stmt->bindParam(':cambio', $this->cambio);

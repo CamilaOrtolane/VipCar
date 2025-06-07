@@ -19,6 +19,7 @@ $dados = $veiculo->buscarPorId();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $veiculo->nome = $_POST['nome'] ?? '';
     $veiculo->disponibilidade_status = $_POST['disponibilidade_status'] ?? '';
+    $veiculo->preco_dia = $_POST['preco_dia'] ?? '';
     $veiculo->capacidade = $_POST['capacidade'] ?? '';
     $veiculo->bagageiro = $_POST['bagageiro'] ?? '';
     $veiculo->cambio = $_POST['cambio'] ?? '';

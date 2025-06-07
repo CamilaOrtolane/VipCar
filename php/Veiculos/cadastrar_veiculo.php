@@ -6,7 +6,6 @@ if ($_POST && isset($_FILES['imagem'])) {
     $db = (new Database())->getConnection();
     $veiculo = new Veiculo($db);
 
-    // Upload da imagem
     $targetDir = "../uploads/";
     if (!file_exists($targetDir)) {
         mkdir($targetDir, 0777, true);
@@ -21,13 +20,14 @@ if ($_POST && isset($_FILES['imagem'])) {
     $check = getimagesize($_FILES["imagem"]["tmp_name"]);
     if ($check !== false && in_array($imageFileType, $allowedTypes)) {
         if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $targetFile)) {
-            // Dados do formulário
+            
             $veiculo->nome = $_POST['nome'];
             $veiculo->disponibilidade_status = $_POST['disponibilidade_status'];
+            $veiculo->preco_dia = $_POST['preco_dia'];
             $veiculo->capacidade = $_POST['capacidade'];
             $veiculo->bagageiro = $_POST['bagageiro'];
             $veiculo->cambio = $_POST['cambio'];
-            $veiculo->imagem = $targetFile; // Caminho salvo no banco
+            $veiculo->imagem = $targetFile; 
             $veiculo->placa = $_POST['placa'];
             $veiculo->ano_fabricacao = $_POST['ano_fabricacao'];
             $veiculo->modelo = $_POST['modelo'];

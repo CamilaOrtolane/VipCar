@@ -42,7 +42,7 @@ try {
   <main>
     <div class="header-section">
       <h2>Locadoras</h2>
-      <a class="button" href="cadas_local.html">Cadastrar Locadora</a>
+      <a class="button" href="../../admin/html/cadas_local.html">Cadastrar Locadora</a>
     </div>
 
    

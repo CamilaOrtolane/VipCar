@@ -50,6 +50,7 @@ if (!$dados) {
   <main>
     <h2>Visualizar Veículo</h2>
     <p><strong>Nome para Exibição:</strong> <?= htmlspecialchars($dados['nome']) ?></p>
+    <p><strong>Valor por Dia:</strong> R$ <?= number_format($dados['preco_dia'], 2, ',', '.') ?></p>
     <p><strong>Modelo:</strong> <?= htmlspecialchars($dados['modelo']) ?></p>
     <p><strong>Marca:</strong> <?= htmlspecialchars($dados['marca']) ?></p>
     <p><strong>Placa:</strong> <?= htmlspecialchars($dados['placa']) ?></p>
