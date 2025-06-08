@@ -28,7 +28,7 @@ try {
 
 
     if($locacao->criar()) {
-        echo "<script>alert('Locação cadastrada com sucesso!'); window.location.href='../../admin/html/Tabela_locacao.php';</script>";
+        echo "<script>alert('Locação cadastrada com sucesso!'); window.location.href='../../admin/html/listar_alugar.php';</script>";
     } else {
         echo "<script>alert('Erro ao cadastrar locação.'); window.history.back();</script>";
     }

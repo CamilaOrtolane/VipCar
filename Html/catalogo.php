@@ -3,17 +3,22 @@ require_once('../php/config/Database.php');
 $db = (new Database())->getConnection();
 
 try {
-    // $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-    // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-   
     $stmt = $db->query("SELECT * FROM veiculo");
-    $veiculo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    $veiculos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Erro na conexão: " . $e->getMessage();
     exit;
 }
+
+// Recupera dados da URL (formulário anterior)
+$localRetirada   = $_GET['local_retirada']   ?? '';
+$dataRetirada    = $_GET['data_retirada']    ?? '';
+$horaRetirada    = $_GET['hora_retirada']    ?? '';
+$localDevolucao  = $_GET['local_devolucao']  ?? '';
+$dataDevolucao   = $_GET['data_devolucao']   ?? '';
+$horaDevolucao   = $_GET['hora_devolucao']   ?? '';
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -45,14 +50,26 @@ try {
   </div>
 
   <div class="catalogo-grid">
-    <?php foreach ($veiculo as $veiculo): ?>
+    <?php foreach ($veiculos as $veiculo): ?>
       <div class="card-carro">
         <img src="../../php/uploads/<?= htmlspecialchars($veiculo['imagem']) ?>" alt="<?= htmlspecialchars($veiculo['modelo']) ?>">
         <h3><?= htmlspecialchars($veiculo['modelo']) ?></h3>
         <p>R$<?= number_format($veiculo['preco_dia'], 2, ',', '.') ?> /dia</p>
+        
         <a class="btn-alugar" 
-        href="alugar.php?id_veiculo_fk=<?= $veiculo['id_vei'] ?>&modelo=<?= urlencode($veiculo['modelo']) ?>&preco=<?= $veiculo['preco_dia'] ?>&imagem=<?= htmlspecialchars($veiculo['imagem']) ?>">
-        Alugar
+          href="alugar.php?
+            id_veiculo_fk=<?= $veiculo['id_vei'] ?>&
+            modelo=<?= urlencode($veiculo['modelo']) ?>&
+            preco=<?= $veiculo['preco_dia'] ?>&
+            imagem=<?= htmlspecialchars($veiculo['imagem']) ?>&
+            id_local_retirada=<?= $_GET['id_local_retirada'] ?? '' ?>&
+            data_retirada=<?= $_GET['data_retirada'] ?? '' ?>&
+            hora_retirada=<?= $_GET['hora_retirada'] ?? '' ?>&
+            id_local_devolucao=<?= $_GET['id_local_devolucao'] ?? '' ?>&
+            data_devolucao=<?= $_GET['data_devolucao'] ?? '' ?>&
+            hora_devolucao=<?= $_GET['hora_devolucao'] ?? '' ?>"
+        >
+          Alugar
         </a>
 
       </div>

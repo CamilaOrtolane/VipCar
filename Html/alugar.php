@@ -10,8 +10,10 @@ $imagem = $_GET['imagem'] ?? '';
 
 $clientes = $conn->query("SELECT id_cli, nome FROM cliente");
 $veiculos = $conn->query("SELECT id_vei, modelo FROM veiculo");
-$id_local_retirada = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora");
-$id_local_devolucao = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora");
+$locais = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora")->fetchAll(PDO::FETCH_ASSOC);
+$idLocalRetirada = $_GET['id_local_retirada'] ?? '';
+$idLocalDevolucao = $_GET['id_local_devolucao'] ?? '';
+
 
 if (!$id_veiculo_fk) {
     die('Veículo não especificado.');
@@ -45,8 +47,9 @@ if (!$id_veiculo_fk) {
 <main class="container2">
   <h1>Realizar Locação</h1>
 
-  <form id="form-locacao" method="post" action="../php/Locação/cadastrar_locacao.php">
-    <!-- Veículo (pré-selecionado) -->
+  <form id="form-locacao" method="post" action="../php/Locação/alugar_loc.php">
+    <input type="hidden" name="id_cliente_fk" value="<?= $id_cliente_logado ?>">
+   
     <div class="form-group">
       <label for="id_veiculo_fk">Veículo:</label>
      <select id="id_veiculo_fk" name="id_veiculo_fk" required>
@@ -60,110 +63,112 @@ if (!$id_veiculo_fk) {
 
     </div>
 
-    <!-- Imagem do carro -->
+  
     <div class="car-image">
       <img id="carImg" src="<?= htmlspecialchars($imagem) ?>" alt="Carro Selecionado">
     </div>
 
-    <!-- Data de retirada -->
+
     <div class="form-group">
       <label for="data_saida">Data de Retirada:</label>
-      <input type="date" id="data_saida" name="data_saida" required>
+      <input type="date" id="data_saida" name="data_saida" value="<?= $_GET['data_retirada'] ?? '' ?>" required>
     </div>
 
-    <!-- Data de entrega -->
+
     <div class="form-group">
       <label for="data_entrada">Data de Entrega:</label>
-      <input type="date" id="data_entrada" name="data_entrada" required>
+      <input type="date" id="data_entrada" name="data_entrada" value="<?= $_GET['data_devolucao'] ?? '' ?>"  required>
     </div>
 
-    <!-- Valor da diária -->
+
     <div class="form-group">
       <label for="valor_por_dia">Valor da Diária</label>
       <input type="text" id="valor_por_dia" name="valor_por_dia" placeholder="R$" value="<?= htmlspecialchars($preco) ?>" required>
     </div>
 
-    <!-- Valor total -->
+
     <div class="form-group">
       <label for="valor_total">Valor Total</label>
       <input type="text" id="valor_total" name="valor_total" placeholder="R$" readonly>
     </div>
 
-    <!-- Horário de retirada -->
+
     <div class="form-group">
       <label for="horario_saida">Horário de Retirada:</label>
-      <input type="time" id="horario_saida" name="horario_saida">
+      <input type="time" id="horario_saida" name="horario_saida" value="<?= $_GET['hora_retirada'] ?? '' ?>" required>
     </div>
 
-    <!-- Horário de entrega -->
     <div class="form-group">
       <label for="horario_entrada">Horário de Entrega:</label>
-      <input type="time" id="horario_entrada" name="horario_entrada" required>
+      <input type="time" id="horario_entrada" name="horario_entrada" value="<?= $_GET['hora_devolucao'] ?? '' ?>" required>
     </div>
+    
+    <select id="id_local_retirada" name="id_local_retirada" required>
+      <option value="">Selecione o local</option>
+      <?php foreach ($locais as $loc) { ?>
+        <option value="<?= $loc['id_loc'] ?>" <?= ($loc['id_loc'] == ($_GET['id_local_retirada'] ?? '')) ? 'selected' : '' ?>>
+          <?= htmlspecialchars($loc['rua'] . ' - ' . $loc['cidade']) ?>
+        </option>
+      <?php } ?>
+    </select>
 
-    <!-- Local de retirada -->
-    <div class="form-group full">
-      <label for="id_local_retirada">Local de Retirada:</label>
-      <select id="id_local_retirada" name="id_local_retirada" required>
-        <option value="">Selecione o local</option>
-        <?php while ($loc = $id_local_retirada->fetch(PDO::FETCH_ASSOC)) { ?>
-          <option value="<?= $loc['id_loc'] ?>">
-            <?= htmlspecialchars($loc['rua']) ?> - <?= htmlspecialchars($loc['cidade']) ?>
-          </option>
-        <?php } ?>
-      </select>
-    </div>
-
-    <!-- Local de devolução -->
-    <div class="form-group full">
-      <label for="id_local_devolucao">Local de Devolução:</label>
-      <select id="id_local_devolucao" name="id_local_devolucao" required>
-        <option value="">Selecione o local</option>
-        <?php while ($loc = $id_local_devolucao->fetch(PDO::FETCH_ASSOC)) { ?>
-          <option value="<?= $loc['id_loc'] ?>">
-            <?= htmlspecialchars($loc['rua']) ?> - <?= htmlspecialchars($loc['cidade']) ?>
-          </option>
-        <?php } ?>
-      </select>
-    </div>
+    
+    <select id="id_local_devolucao" name="id_local_devolucao" required>
+      <option value="">Selecione o local</option>
+      <?php foreach ($locais as $loc) { ?>
+        <option value="<?= $loc['id_loc'] ?>" <?= ($loc['id_loc'] == ($_GET['id_local_devolucao'] ?? '')) ? 'selected' : '' ?>>
+          <?= htmlspecialchars($loc['rua'] . ' - ' . $loc['cidade']) ?>
+        </option>
+      <?php } ?>
+    </select>
 
     <div class="actions">
       <button type="button" class="btn btn-cancelar" onclick="history.back()">Cancelar ✖</button>
       <button type="submit" class="btn save">Salvar</button>
     </div>
+
+    <input type="hidden" name="status" value="Ativa">
+
   </form>
 </main>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const dataEntrada = document.getElementById("data_saida");
-  const dataEntrega = document.getElementById("data_entrada");
+  const dataSaida = document.getElementById("data_saida");
+  const dataEntrada = document.getElementById("data_entrada");
   const valorDiaria = document.getElementById("valor_por_dia");
   const valorTotal = document.getElementById("valor_total");
 
   function calcularValorTotal() {
-    const entrada = new Date(dataEntrada.value);
-    const entrega = new Date(dataEntrega.value);
-    const diaria = parseFloat(valorDiaria.value.replace(",", "."));
+    const data1 = dataSaida.value;
+    const data2 = dataEntrada.value;
+    const diariaStr = valorDiaria.value.replace("R$", "").trim().replace(",", ".");
+    const diaria = parseFloat(diariaStr);
 
-    if (!isNaN(entrada) && !isNaN(entrega) && !isNaN(diaria)) {
-      const diffMs = entrega - entrada;
-      const diffDias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+    if (data1 && data2 && !isNaN(diaria)) {
+      const d1 = new Date(data1);
+      const d2 = new Date(data2);
 
-      if (diffDias > 0) {
+      if (!isNaN(d1) && !isNaN(d2) && d2 > d1) {
+        const diffMs = d2 - d1;
+        const diffDias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
         const total = diffDias * diaria;
         valorTotal.value = "R$ " + total.toFixed(2).replace(".", ",");
-      } else {
-        valorTotal.value = valorDiaria.value;
+        return;
       }
     }
+
+    valorTotal.value = ""; 
   }
 
-  // Atualiza valor total quando qualquer campo relevante muda
+  calcularValorTotal();
+
+  dataSaida.addEventListener("change", calcularValorTotal);
   dataEntrada.addEventListener("change", calcularValorTotal);
-  dataEntrega.addEventListener("change", calcularValorTotal);
   valorDiaria.addEventListener("input", calcularValorTotal);
 });
 </script>
+
 
 </body>
 </html>

@@ -1,90 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../Style/Cadastro-Clientes.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro de Cliente</title>
+  <link rel="stylesheet" href="../Style/Cadastro-Clientes.css" />
 </head>
 <body>
-      <header class="topbar">
-  <div class="container">
-    <img src="../img/logo.png" alt="Logo" class="logo">
-    <nav class="menu">
-      <a href="home.html">Início</a>
-      <a href="catalogo.html">Catálogo</a>
-      <a href="reserva.html">Reservas</a>
-      <a href="login.html">Perfil</a>
-    </nav>
-  </div>
-</header>
+  <header class="topbar">
+    <div class="container">
+      <img src="../img/logo.png" alt="Logo" class="logo" />
+      <nav class="menu">
+        <a href="home.html">Início</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="reserva.html">Reservas</a>
+        <a href="login.html">Perfil</a>
+      </nav>
+    </div>
+  </header>
 
-      <div class="container">
-    <form class="Cadastro" action="../../php/Cliente/cadastrar_cliente.php" method="post">
-      <form class="Cadastro">
+  <div class="container">
+    <form class="Cadastro" action="/VipCar/php/Cliente/cadastrar_se.php" method="post">
       <div class="form-group">
         <label>Nome:</label>
-        <input type="text" placeholder="Digite aqui..." name="nome"/>
+        <input type="text" name="nome" placeholder="Digite aqui..." required />
       </div>
+
       <div class="form-group">
         <label>CPF:</label>
-        <input type="text" placeholder="Digite aqui..." name="cpf"/>
+        <input type="text" name="cpf" placeholder="Digite aqui..." required />
       </div>
-          <div class="invi"></div>
+
       <div class="form-group">
         <label>Data de Nascimento:</label>
-        <input type="date" name="data_nascimento"/>
+        <input type="date" name="data_nascimento" required />
       </div>
+
       <div class="form-group">
         <label>Telefone:</label>
-        <input type="text" placeholder="Digite aqui..." name="telefone"/>
+        <input type="text" name="telefone" placeholder="Digite aqui..." required />
       </div>
+
       <div class="form-group">
         <label>CNH:</label>
-        <input type="text" placeholder="Digite aqui..." name="cnh"/>
+        <input type="text" name="cnh" placeholder="Digite aqui..." required />
       </div>
-        <div class="invi"></div>
+
       <div class="form-group">
-        <label class=>Logradouro:</label> 
-        <input type="text" placeholder="Digite aqui..." name="rua"/>
+        <label>Logradouro:</label>
+        <input type="text" name="rua" placeholder="Digite aqui..." required />
       </div>
+
       <div class="form-group">
         <label>Bairro:</label>
-        <input type="text" placeholder="Digite aqui..." name="bairro"/>
-        
+        <input type="text" name="bairro" placeholder="Digite aqui..." required />
       </div>
-          <div class="invi"></div>
+
       <div class="form-group">
         <label>CEP:</label>
-        <input type="text" placeholder="Digite aqui..." name="cep"/>
+        <input type="text" name="cep" placeholder="Digite aqui..." required />
       </div>
+
       <div class="form-group">
         <label>Cidade:</label>
-        <input type="text" placeholder="Digite aqui..." name="cidade"/>
+        <input type="text" name="cidade" placeholder="Digite aqui..." required />
       </div>
+
       <div class="form-group">
         <label>Estado:</label>
-        <input type="text" placeholder="Digite aqui..." name="estado"/>
+        <input type="text" name="estado" placeholder="Ex: SP" maxlength="2" required />
       </div>
-      <div class="invi"></div>
+
       <div class="form-group">
         <label>Email:</label>
-        <input type="email" placeholder="Digite aqui..." name="email"/>
+        <input type="email" name="email" placeholder="Digite aqui..." required />
       </div>
-      <div class="invi"></div>
+
       <div class="form-group">
         <label>Digite sua senha: *</label>
-        <input type="password" class="senha" placeholder="Digite aqui..." />
+        <input type="password" name="senha" class="senha" placeholder="Digite aqui..." required />
       </div>
+
       <div class="form-group">
         <label>Confirme sua senha: *</label>
-        <input type="password" class="senha" placeholder="Digite aqui..." />
+        <input type="password" name="confirmar_senha" class="senha" placeholder="Digite aqui..." required />
       </div>
+
       <div class="form-group-full botoes">
         <a href="Tabela_clientes.php"><button type="button" class="btn cancelar">Cancelar</button></a>
-        <button type="submit" class="btn entrar">Entrar</button>
+        <button type="submit" class="btn entrar">Cadastrar</button>
       </div>
     </form>
   </div>
+
+  <script>
+    document.querySelector("form.Cadastro").addEventListener("submit", function(e) {
+      const senha = document.querySelector('input[name="senha"]').value;
+      const confirmar = document.querySelector('input[name="confirmar_senha"]').value;
+      if (senha !== confirmar) {
+        alert("As senhas não coincidem.");
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>

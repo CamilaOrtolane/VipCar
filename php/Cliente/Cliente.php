@@ -15,6 +15,7 @@ class Cliente {
     public $estado;
     public $data_nascimento;
     public $cnh;
+    public $senha;
     
 
     public function __construct($db) {
@@ -29,9 +30,13 @@ class Cliente {
     }
 
     public function criar() {
-        $query = "INSERT INTO " . $this->table . " (nome, cpf, telefone, email, rua, bairro, cep, cidade, estado, data_nascimento, cnh)
-                  VALUES (:nome, :cpf, :telefone, :email, :rua, :bairro, :cep, :cidade, :estado, :data_nascimento, :cnh)";
+        $query = "INSERT INTO " . $this->table . " 
+        (nome, cpf, telefone, email, rua, bairro, cep, cidade, estado, data_nascimento, cnh, senha)
+        VALUES 
+        (:nome, :cpf, :telefone, :email, :rua, :bairro, :cep, :cidade, :estado, :data_nascimento, :cnh, :senha)";
+        
         $stmt = $this->conn->prepare($query);
+
         $stmt->bindParam(':nome', $this->nome);
         $stmt->bindParam(':cpf', $this->cpf);
         $stmt->bindParam(':telefone', $this->telefone);
@@ -43,6 +48,8 @@ class Cliente {
         $stmt->bindParam(':estado', $this->estado);
         $stmt->bindParam(':data_nascimento', $this->data_nascimento);
         $stmt->bindParam(':cnh', $this->cnh);
+        $stmt->bindParam(':senha', $this->senha);
+
         return $stmt->execute();
     }
 

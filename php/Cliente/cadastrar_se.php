@@ -26,7 +26,7 @@ if ($_POST) {
     $cliente->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
     if ($cliente->criar()) {
-        header("Location: listar_clientes.php");
+        header("Location: listar_cli.php");
         exit;
     } else {
         echo "Erro ao criar cliente.";

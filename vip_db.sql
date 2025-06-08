@@ -5,6 +5,7 @@ create table veiculo (
     id_vei int auto_increment primary key unique,
     nome varchar(255),
     disponibilidade_status varchar(100),
+    preco_dia DOUBLE,
     capacidade int,
     bagageiro boolean,
     cambio varchar(100),
@@ -31,7 +32,8 @@ create table cliente (
     cidade varchar(100),
     estado varchar(2),
     data_nascimento date,
-    cnh varchar(20)
+    cnh varchar(20),
+    senha VARCHAR(100)
 );
 create table local_locadora (
     id_loc int auto_increment primary key unique,
@@ -64,3 +66,4 @@ create table locacao (
    foreign key (id_local_locadora_fk) references local_locadora(id_loc)
 );
 
+SELECT * FROM locacao;

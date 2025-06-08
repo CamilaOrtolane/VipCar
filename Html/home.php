@@ -1,3 +1,8 @@
+<?php
+require_once '../php/Locação/conexao.php'; 
+
+$locais = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora")->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -24,7 +29,7 @@
   <section  class="painel">
     <div class="texto">
       <h1>Alugue o Carro <br> ideal para sua <br>jornada</h1>
-      <button class="btn-ver-veiculos">Ver veículos disponíveis</button>
+      <button class="btn-ver-veiculos" onclick="window.location.href='catalogo.php'">Ver veículos disponíveis</button>
     </div>
     <div class="imagem">
       <img src="../img/Onix preto.png" alt="Carro para alugar">
@@ -54,35 +59,51 @@
 </section>
 
 <section class="form-aluguel">
-  <form>
+  <form action="catalogo.php" method="get">
     <div class="linha-form">
       <div class="campo">
         <label>Local para retirada:</label>
-        <input type="text" placeholder="Digite o local">
+        <select name="id_local_retirada" required>
+          <option value="">Selecione o local</option>
+          <?php foreach ($locais as $loc) { ?>
+            <option value="<?= $loc['id_loc'] ?>">
+              <?= htmlspecialchars($loc['rua']) ?> - <?= htmlspecialchars($loc['cidade']) ?>
+            </option>
+          <?php } ?>
+        </select>
       </div>
       <div class="campo">
         <label>Data:</label>
-        <input type="date">
+        <input type="date" name="data_retirada" required>
       </div>
       <div class="campo">
         <label>Horário:</label>
-        <input type="time">
+        <input type="time" name="hora_retirada" required>
       </div>
     </div>
+
     <div class="linha-form">
       <div class="campo">
         <label>Local para devolução:</label>
-        <input type="text" placeholder="Digite o local">
+        <select name="id_local_devolucao" required>
+          <option value="">Selecione o local</option>
+          <?php foreach ($locais as $loc) { ?>
+            <option value="<?= $loc['id_loc'] ?>">
+              <?= htmlspecialchars($loc['rua']) ?> - <?= htmlspecialchars($loc['cidade']) ?>
+            </option>
+          <?php } ?>
+        </select>
       </div>
       <div class="campo">
         <label>Data:</label>
-        <input type="date">
+        <input type="date" name="data_devolucao" required>
       </div>
       <div class="campo">
         <label>Horário:</label>
-        <input type="time">
+        <input type="time" name="hora_devolucao" required>
       </div>
     </div>
+
     <button type="submit" class="btn-continuar">Continuar</button>
   </form>
 </section>
