@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if ($user && password_verify($senha, $user['senha'])) {
     $_SESSION['usuario_id'] = $user['id_cli'];
-    header("Location: perfil.php");
+    header("Location: home.php");
     exit();
   } else {
     $erro = "Usuário ou senha inválidos.";

@@ -1,14 +1,15 @@
 <?php
-require_once 'conexao.php'; // Conexão com o banco
-require_once 'Locacao.php'; // Classe Locacao
+session_start();
+require_once 'conexao.php'; 
+require_once 'Locacao.php'; 
 
 require_once('../../php/config/Database.php');
 
 $db = (new Database())->getConnection();
+$locacao = new Locacao($db);
 
 
 try {
-    // Instanciar a classe Locacao
     $locacao = new Locacao($conn);
 
     $locacao->data_entrada = $_POST['data_entrada'];
@@ -26,6 +27,9 @@ try {
     $valor_total = floatval(str_replace(',', '.', str_replace('R$', '', $valor_total_br)));
     $locacao->valor_total = $valor_total;
 
+    if (!$locacao->id_cliente_fk) {
+        die("Erro: Cliente não está logado.");
+    }
 
     if($locacao->criar()) {
         echo "<script>alert('Locação cadastrada com sucesso!'); window.location.href='../../admin/html/listar_alugar.php';</script>";
@@ -37,4 +41,25 @@ try {
     echo "Erro: " . $e->getMessage();
 }
 ?>
+
+<!-- 
+
+
+// Definir os valores recebidos do formulário
+$locacao->data_entrada = $_POST['data_entrada'] ?? null;
+$locacao->data_saida = $_POST['data_saida'] ?? null;
+$locacao->horario_entrada = $_POST['horario_entrada'] ?? null;
+$locacao->horario_saida = $_POST['horario_saida'] ?? null;
+$locacao->valor_por_dia = $_POST['valor_por_dia'] ?? null;
+$locacao->valor_total = $_POST['valor_total'] ?? null;
+$locacao->local_retirada_cidade = $_POST['local_retirada_cidade'] ?? null;
+$locacao->local_entrega = $_POST['local_entrega'] ?? null;
+$locacao->status = $_POST['status'] ?? 'Reservado';
+$locacao->id_cliente_fk = $_SESSION['id_cliente'] ?? null;
+$locacao->id_veiculo_fk = $_POST['id_veiculo_fk'] ?? null;
+$locacao->id_local_retirada = $_POST['id_local_retirada'] ?? null;
+$locacao->id_local_devolucao = $_POST['id_local_devolucao'] ?? null;
+
+?> -->
+
 

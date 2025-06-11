@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../../php/Locação/conexao.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

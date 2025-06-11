@@ -1,7 +1,20 @@
 <?php
+ini_set('session.cookie_path', '/');
+session_start();
+
+echo "Sessão ID: " . session_id() . "<br>";
+echo "ID do cliente: " . ($_SESSION['id_cliente'] ?? 'NÃO LOGADO');
+
 require_once '../php/Locação/conexao.php';
 
-// Recupera os dados do veículo via GET
+
+$id_cliente_logado = $_SESSION['usuario_id'] ?? null;
+
+if (!$id_cliente_logado) {
+    die("Usuário não está logado. Faça login para continuar.");
+}
+
+
 $id_veiculo_fk = isset($_GET['id_veiculo_fk']) ? (int) $_GET['id_veiculo_fk'] : null;
 $modelo = $_GET['modelo'] ?? '';
 $preco = $_GET['preco'] ?? '';
@@ -39,7 +52,7 @@ if (!$id_veiculo_fk) {
       <a href="home.html">Início</a>
       <a href="catalogo.php">Catálogo</a>
       <a href="reserva.html">Reservas</a>
-      <a href="login.html">Perfil</a>
+      <a href="login.php">Perfil</a>
     </nav>
   </div>
 </header>
@@ -49,7 +62,7 @@ if (!$id_veiculo_fk) {
 
   <form id="form-locacao" method="post" action="../php/Locação/alugar_loc.php">
     <input type="hidden" name="id_cliente_fk" value="<?= $id_cliente_logado ?>">
-   
+
     <div class="form-group">
       <label for="id_veiculo_fk">Veículo:</label>
      <select id="id_veiculo_fk" name="id_veiculo_fk" required>

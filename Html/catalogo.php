@@ -1,6 +1,23 @@
 <?php
+session_start();
+
+echo "Sessão ID: " . session_id() . "<br>";
+echo "ID do cliente: " . ($_SESSION['usuario_id'] ?? 'NÃO LOGADO');
+
+
+// if (!isset($_SESSION['id_cliente'])) {
+//     header('Location: login.php');
+//     exit;
+// }
+
 require_once('../php/config/Database.php');
 $db = (new Database())->getConnection();
+
+$id_cliente_logado = $_SESSION['usuario_id'] ?? null;
+
+$stmt = $db->prepare("SELECT nome FROM cliente WHERE id_cli = ?");
+$stmt->execute([$id_cliente_logado]);
+$cliente = $stmt->fetch(PDO::FETCH_ASSOC);
 
 try {
     $stmt = $db->query("SELECT * FROM veiculo");
@@ -9,16 +26,7 @@ try {
     echo "Erro na conexão: " . $e->getMessage();
     exit;
 }
-
-// Recupera dados da URL (formulário anterior)
-$localRetirada   = $_GET['local_retirada']   ?? '';
-$dataRetirada    = $_GET['data_retirada']    ?? '';
-$horaRetirada    = $_GET['hora_retirada']    ?? '';
-$localDevolucao  = $_GET['local_devolucao']  ?? '';
-$dataDevolucao   = $_GET['data_devolucao']   ?? '';
-$horaDevolucao   = $_GET['hora_devolucao']   ?? '';
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -35,8 +43,11 @@ $horaDevolucao   = $_GET['hora_devolucao']   ?? '';
       <a href="home.html">Início</a>
       <a href="catalogo.php">Catálogo</a>
       <a href="reserva.html">Reservas</a>
-      <a href="login.html">Perfil</a>
+      <a href="perfil.php">Perfil</a>
     </nav>
+    <div class="usuario-logado">
+      Bem-vindo, <?= htmlspecialchars($cliente['nome']) ?>
+    </div>
   </div>
 </header>
 
@@ -67,7 +78,7 @@ $horaDevolucao   = $_GET['hora_devolucao']   ?? '';
             hora_retirada=<?= $_GET['hora_retirada'] ?? '' ?>&
             id_local_devolucao=<?= $_GET['id_local_devolucao'] ?? '' ?>&
             data_devolucao=<?= $_GET['data_devolucao'] ?? '' ?>&
-            hora_devolucao=<?= $_GET['hora_devolucao'] ?? '' ?>"
+            hora_devolucao=<?= $_GET['hora_devolucao'] ?? '' ?> "
         >
           Alugar
         </a>

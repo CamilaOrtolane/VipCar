@@ -1,5 +1,9 @@
 <?php
-require_once '../php/Locação/conexao.php'; 
+session_start();
+require_once '../php/Locação/conexao.php';
+
+// Verifica se há usuário logado
+$nome_usuario = $_SESSION['nome'] ?? null;
 
 $locais = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora")->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -11,31 +15,39 @@ $locais = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora")->fetchA
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../Style/home.css">
   <script src="../js/Home.js"></script>
-  
 </head>
 <body>
 
-  <header class="topbar">
+<header class="topbar">
   <div class="container">
     <img src="../img/logo.png" alt="Logo" class="logo">
     <nav class="menu">
-      <a href="home.html">Início</a>
+      <a href="home.php">Início</a>
       <a href="catalogo.php">Catálogo</a>
       <a href="reserva.html">Reservas</a>
-      <a href="perfil.html">Perfil</a>
+      <a href="perfil.php">Perfil</a>
+
+      <?php if ($nome_usuario): ?>
+        <span class="usuario-logado">Olá, <?= htmlspecialchars($nome_usuario) ?>!</span>
+        <a href="logout.php" class="sair">Sair</a>
+      <?php else: ?>
+        <a href="login.php" class="entrar">Entrar</a>
+      <?php endif; ?>
     </nav>
   </div>
 </header>
-  <section  class="painel">
-    <div class="texto">
-      <h1>Alugue o Carro <br> ideal para sua <br>jornada</h1>
-      <button class="btn-ver-veiculos" onclick="window.location.href='catalogo.php'">Ver veículos disponíveis</button>
-    </div>
-    <div class="imagem">
-      <img src="../img/Onix preto.png" alt="Carro para alugar">
-    </div>
-  </section>
-  <section class="beneficios">
+
+<section class="painel">
+  <div class="texto">
+    <h1>Alugue o Carro <br> ideal para sua <br>jornada</h1>
+    <button class="btn-ver-veiculos" onclick="window.location.href='catalogo.php'">Ver veículos disponíveis</button>
+  </div>
+  <div class="imagem">
+    <img src="../img/Onix preto.png" alt="Carro para alugar">
+  </div>
+</section>
+
+<section class="beneficios">
   <div class="beneficio">
     <img src="../img/miniature_car.png">
     <h3>Variedade <br>de Veículos</h3>
@@ -107,5 +119,6 @@ $locais = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora")->fetchA
     <button type="submit" class="btn-continuar">Continuar</button>
   </form>
 </section>
+
 </body>
 </html>

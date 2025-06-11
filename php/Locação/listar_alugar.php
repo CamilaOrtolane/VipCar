@@ -6,4 +6,4 @@ $db = (new Database())->getConnection();
 $locacao = new Locacao($db);
 $resultado = $locacao->listar();
 
-include ('../../Html/home.php');
+include ('../Html/home.php');
