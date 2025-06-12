@@ -49,7 +49,7 @@ if (!$id_veiculo_fk) {
   <div class="container">
     <img src="../img/logo.png" alt="Logo" class="logo">
     <nav class="menu">
-      <a href="home.html">Início</a>
+      <a href="home.php">Início</a>
       <a href="catalogo.php">Catálogo</a>
       <a href="reserva.html">Reservas</a>
       <a href="login.php">Perfil</a>

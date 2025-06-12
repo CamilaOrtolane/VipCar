@@ -113,7 +113,7 @@ $locadoras_devolucao = $conn->query("SELECT id_loc, rua, cidade FROM local_locad
 
     <div>
       <label for="valor_total">Valor Total (R$):</label>
-      <input type="number" step="0.01" id="valor_total" name="valor_total" placeholder="Ex.: 450.00" required>
+      <input type="text" id="valor_total" name="valor_total" placeholder="R$" readonly>
     </div>
 
     <div>
