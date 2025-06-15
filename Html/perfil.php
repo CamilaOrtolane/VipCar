@@ -35,7 +35,7 @@ if (!$cliente) {
       <nav class="menu">
         <a href="home.php">Início</a>
         <a href="catalogo.php">Catálogo</a>
-        <a href="reserva.html">Reservas</a>
+        <a href="reserva.php">Reservas</a>
         <a href="perfil.php">Perfil</a>
       </nav>
     </div>

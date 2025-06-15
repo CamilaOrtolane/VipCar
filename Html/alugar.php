@@ -6,7 +6,10 @@ echo "Sessão ID: " . session_id() . "<br>";
 echo "ID do cliente: " . ($_SESSION['id_cliente'] ?? 'NÃO LOGADO');
 
 require_once '../php/Locação/conexao.php';
-
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit();
+}
 
 $id_cliente_logado = $_SESSION['usuario_id'] ?? null;
 
@@ -51,7 +54,7 @@ if (!$id_veiculo_fk) {
     <nav class="menu">
       <a href="home.php">Início</a>
       <a href="catalogo.php">Catálogo</a>
-      <a href="reserva.html">Reservas</a>
+      <a href="reserva.php">Reservas</a>
       <a href="login.php">Perfil</a>
     </nav>
   </div>

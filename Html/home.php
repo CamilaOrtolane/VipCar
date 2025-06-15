@@ -21,10 +21,12 @@ $locais = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora")->fetchA
 <header class="topbar">
   <div class="container">
     <img src="../img/logo.png" alt="Logo" class="logo">
-    <nav class="menu">
+    
+  </div>
+  <nav class="menu">
       <a href="home.php">Início</a>
       <a href="catalogo.php">Catálogo</a>
-      <a href="reserva.html">Reservas</a>
+      <a href="reserva.php">Reservas</a>
       <a href="perfil.php">Perfil</a>
 
       <?php if ($nome_usuario): ?>
@@ -34,7 +36,6 @@ $locais = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora")->fetchA
         <a href="login.php" class="entrar">Entrar</a>
       <?php endif; ?>
     </nav>
-  </div>
 </header>
 
 <section class="painel">

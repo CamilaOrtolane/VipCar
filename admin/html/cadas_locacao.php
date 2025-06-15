@@ -1,13 +1,10 @@
 <?php
 require_once '../../php/Locação/conexao.php';
 
-// Buscar clientes
 $clientes = $conn->query("SELECT id_cli, nome FROM cliente");
 
-// Buscar veículos
 $veiculos = $conn->query("SELECT id_vei, modelo FROM veiculo");
 
-// Buscar locadoras (faremos duas consultas separadas)
 $locadoras_retirada = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora");
 $locadoras_devolucao = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora");
 ?>
@@ -108,7 +105,7 @@ $locadoras_devolucao = $conn->query("SELECT id_loc, rua, cidade FROM local_locad
 
     <div>
       <label for="valor_por_dia">Valor da Diária (R$):</label>
-      <input type="number" step="0.01" id="valor_por_dia" name="valor_por_dia" placeholder="Ex.: 150.00" required>
+            <input type="text" id="valor_por_dia" name="valor_por_dia" placeholder="R$" value="<?= htmlspecialchars($loc['valor_por_dia']) ?>" required>
     </div>
 
     <div>
@@ -129,6 +126,7 @@ $locadoras_devolucao = $conn->query("SELECT id_loc, rua, cidade FROM local_locad
 
   </div>
 
+
   <div class="button-group">
     <button type="button" class="btn cancel" onclick="window.history.back()">Cancelar</button>
     <button type="submit" class="btn save">Salvar</button>
@@ -136,6 +134,43 @@ $locadoras_devolucao = $conn->query("SELECT id_loc, rua, cidade FROM local_locad
 </form>
 
 <script src="../js/Veiculos.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const dataEntrada = document.getElementById("data_entrada");
+  const dataSaida = document.getElementById("data_saida");
+  const valorDiaria = document.getElementById("valor_por_dia");
+  const valorTotal = document.getElementById("valor_total");
+
+  function calcularValorTotal() {
+    const entradaStr = dataEntrada.value;
+    const saidaStr = dataSaida.value;
+    const diariaStr = valorDiaria.value.replace("R$", "").trim().replace(",", ".");
+    const diaria = parseFloat(diariaStr);
+
+    if (entradaStr && saidaStr && !isNaN(diaria)) {
+      const entrada = new Date(entradaStr);
+      const saida = new Date(saidaStr);
+
+      if (!isNaN(entrada) && !isNaN(saida) && saida > entrada) {
+        const diffMs = saida - entrada;
+        const diffDias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+        const total = diffDias * diaria;
+        valorTotal.value = "R$ " + total.toFixed(2).replace(".", ",");
+        return;
+      }
+    }
+
+    valorTotal.value = "";
+  }
+
+  calcularValorTotal();
+
+  dataEntrada.addEventListener("change", calcularValorTotal);
+  dataSaida.addEventListener("change", calcularValorTotal);
+  valorDiaria.addEventListener("input", calcularValorTotal);
+});
+
+</script>
 
 </body>
 </html>
