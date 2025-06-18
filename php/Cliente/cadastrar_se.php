@@ -55,13 +55,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':senha', $senha_hash);
 
-    try {
+   try {
         $stmt->execute();
-        header("Location: ../../paginas/login.php?cadastro=sucesso");
+        echo "<script>
+                alert('Cadastro realizado com sucesso!');
+                window.location.href = '../../Html/login.php';
+              </script>";
         exit();
     } catch (PDOException $e) {
-        echo "Erro ao cadastrar: " . $e->getMessage();
+        echo "<script>alert('Erro ao cadastrar: " . $e->getMessage() . "'); window.history.back();</script>";
+        exit();
     }
 } else {
-    echo "Método de requisição inválido.";
+    echo "<script>alert('Método de requisição inválido.'); window.history.back();</script>";
+    exit();
 }
