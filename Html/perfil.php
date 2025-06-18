@@ -47,7 +47,7 @@ if (!$cliente) {
     <section class="perfil-dados">
       <div class="perfil-titulo">
         <h2>Perfil</h2>
-        <button class="btn-editar">Editar Perfil</button>
+        <!-- <button class="btn-editar">Editar Perfil</button> -->
       </div>
 
       <div class="info-usuario">
@@ -67,12 +67,6 @@ if (!$cliente) {
           <p><strong>Estado:</strong> <?= htmlspecialchars($cliente['estado']) ?></p>
         </div>
       </div>
-    </section>
-
-    <section class="historico-locacoes">
-      <h2>Histórico de Locações</h2>
- 
-      <p>Em breve</p>
     </section>
   </main>
 </body>

@@ -4,16 +4,29 @@ require_once('../../php/config/Database.php');
 $db = (new Database())->getConnection();
 
 try {
-    $stmt = $db->query("SELECT * FROM locacao");
-    $locacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $db->query("SELECT COUNT(*) AS total_disponiveis FROM veiculo WHERE disponibilidade_status = 'Disponível'");
+    $veiculosDisponiveis = $stmt->fetch(PDO::FETCH_ASSOC)['total_disponiveis'];
 } catch (PDOException $e) {
-    echo "Erro na consulta: " . $e->getMessage();
+    echo "Erro na consulta de veículos: " . $e->getMessage();
     exit;
 }
 
-require_once('../../php/config/Database.php');
+try {
+    $stmt = $db->query("SELECT COUNT(*) AS total_locacoes FROM locacao");
+    $totalLocacoes = $stmt->fetch(PDO::FETCH_ASSOC)['total_locacoes'];
+} catch (PDOException $e) {
+    echo "Erro na consulta de locações: " . $e->getMessage();
+    exit;
+}
 
-$db = (new Database())->getConnection();
+try {
+    $stmt = $db->query("SELECT SUM(valor_total) AS soma_valor FROM locacao");
+    $somaValor = $stmt->fetch(PDO::FETCH_ASSOC)['soma_valor'];
+    $somaValor = $somaValor ? $somaValor : 0;
+} catch (PDOException $e) {
+    echo "Erro na consulta do valor total: " . $e->getMessage();
+    exit;
+}
 
 try {
     $stmt = $db->query("
@@ -27,14 +40,16 @@ try {
         FROM locacao l
         INNER JOIN cliente c ON l.id_cliente_fk = c.id_cli
         INNER JOIN veiculo v ON l.id_veiculo_fk = v.id_vei
+        ORDER BY l.data_saida DESC
+        LIMIT 5
     ");
     $locacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    echo "Erro na consulta: " . $e->getMessage();
+    echo "Erro na consulta de locações recentes: " . $e->getMessage();
     exit;
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +76,6 @@ try {
     <li><a href="Tabela_veiculos.php">Consultar Veículos</a></li>
     <li><a href="Tabela_locacao.php">Consultar Locações</a></li>
     <li><a href="Tabela_Local.php">Consultar Locadoras</a></li>
-    <li><a href="Catalogo adm.html">Catálogo</a></li>
   </ul>
 </aside>
 <div class="overlay" id="overlay"></div>
@@ -71,29 +85,28 @@ try {
   <div class="card">
     <img src="https://img.icons8.com/ios-filled/50/f7931e/calendar--v1.png" alt="Calendário">
     <div class="text">
-      <h3 class="valor" id="locacoes-hoje">4</h3>
-      <p class="label">Locações de hoje</p>
+      <h3 class="valor"><?= $totalLocacoes ?></h3>
+      <p class="label">Total de Locações</p>
     </div>
   </div>
 
-  <!-- Card: Veículos disponíveis -->
   <div class="card">
     <img src="https://img.icons8.com/ios-filled/50/f7931e/car--v1.png" alt="Veículo">
     <div class="text">
-      <h3 class="valor" id="veiculos-disponiveis">50</h3>
-      <p class="label">Veículos disponíveis</p>
+      <h3 class="valor"><?= $veiculosDisponiveis ?></h3>
+      <p class="label">Veículos Disponíveis</p>
     </div>
   </div>
 
-  <!-- Card: Valor total -->
   <div class="card">
     <img src="https://img.icons8.com/ios-filled/50/f7931e/money.png" alt="Dinheiro">
     <div class="text">
-      <h3 class="valor" id="valor-total">R$ 820.00</h3>
-      <p class="label">Valor total das locações</p>
+      <h3 class="valor">R$ <?= number_format($somaValor, 2, ',', '.') ?></h3>
+      <p class="label">Valor Total das Locações</p>
     </div>
   </div>
 </div>
+
 
     <h3>Locações Recentes</h3>
     <button class="button-consultar" onclick="window.location.href='Tabela_locacao.php'">Consultar Locações ➔</button>

@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha" required />
       </div>
-      <a href="esqueci-senha.html" class="esqueci-senha">Esqueci minha senha</a>
+      <a href="esqueci_senha.php" class="esqueci-senha">Esqueci minha senha</a>
       <button type="submit" class="btn-entrar">Entrar</button>
       <div class="divider"></div>
       <button onclick="window.location.href='Cadastro-Clientes.html'" type="button" class="btn-cadastrar">Cadastre-se</button>

@@ -49,9 +49,15 @@ body {
   align-items: center;
   
 }
-.menu{
+/* .menu{
     margin-left: 880px;
+} */
+ .menu {
+    display: flex;
+    gap: 30px;
+    margin-left: 800px;
 }
+
 .container2 {
   padding: 40px;
   margin-top: 70px;
@@ -81,41 +87,57 @@ body {
 }
 
 .catalogo-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: flex-start;
 }
 
 .card-carro {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
-  width: 250px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  text-align: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 250px;
+    height: 290px; /* Altura fixa para todos ficarem iguais */
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
 }
 
 .card-carro img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
+    width: 100%;
+    height: 140px;
+    object-fit: contain; /* Mantém a proporção da imagem */
+    margin-bottom: 10px;
 }
 
 .card-carro h3 {
-  margin: 10px 0 5px;
+    margin: 0px 0;
+    font-size: 18px;
 }
 
 .card-carro p {
-  margin: 0 0 10px;
-  font-weight: bold;
+    margin: 0px 0;
+    font-weight: bold;
+    color: #000000;
 }
 
 .btn-alugar {
-  background-color: orange;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  display: inline-block;
+    background-color: orange;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
+
+.btn-alugar:hover {
+    background-color: #e69500;
+}
+

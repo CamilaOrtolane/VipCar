@@ -34,7 +34,6 @@ try {
     <li><a href="../../admin/html/Tabela_Veiculos.php">Consultar Veículos</a></li>
     <li><a href="../../admin/html/Tabela_locacao.php">Consultar Locações</a></li>
     <li><a href="../../admin/html/Tabela_Local.php">Consultar Locadoras</a></li>
-    <li><a href="../../admin/html/Catalogo_adm.html">Catálogo</a></li>
     </ul>
   </aside>
   <div class="overlay" id="overlay"></div>
@@ -57,28 +56,29 @@ try {
       </tr>
 
       <?php
-      if (count($veiculos) > 0) {
-          foreach ($veiculos as $veiculo) {
-            $imagem = isset($veiculo['imagem']) ? str_replace('../', '', $veiculo['imagem']) : '';
+        if (count($veiculos) > 0) {
+            foreach ($veiculos as $veiculo) {
+                $imagem = !empty($veiculo['imagem']) ? $veiculo['imagem'] : 'default.png';
 
-              echo "<tr>";
-              echo "<td>" . htmlspecialchars($veiculo['id_vei']) . "</td>";
-              echo "<td>" . htmlspecialchars($veiculo['nome']) . "</td>";
-              echo "<td>" . htmlspecialchars($veiculo['disponibilidade_status']) . "</td>";
-              echo "<td><img src='../../" . htmlspecialchars($imagem) . "' alt='Imagem' width='80'></td>";
-              echo "<td>" . htmlspecialchars($veiculo['placa']) . "</td>";
-              echo "<td>" . htmlspecialchars($veiculo['modelo']) . "</td>";
-              echo "<td>
-                      <a href='../../admin/html/visu_veiculos.php?id_vei=" . $veiculo['id_vei'] . "' class='aTabela'>Visualizar</a> |
-                      <a href='../../admin/html/edit_veiculos.php?id_vei=" . $veiculo['id_vei'] . "' class='aTabela'>Editar</a> |
-                      <a href='../../admin/html/delete_veiculo.php?id_vei=" . $veiculo['id_vei'] . "' onclick=\"return confirm('Tem certeza que deseja excluir?');\" class='aTabela'>Excluir</a>
-                    </td>";
-              echo "</tr>";
-          }
-      } else {
-          echo "<tr><td colspan='16'>Nenhum veículo encontrado.</td></tr>";
-      }
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($veiculo['id_vei']) . "</td>";
+                echo "<td>" . htmlspecialchars($veiculo['nome']) . "</td>";
+                echo "<td>" . htmlspecialchars($veiculo['disponibilidade_status']) . "</td>";
+                echo "<td><img src='../../php/uploads/" . htmlspecialchars($imagem) . "' alt='Imagem' width='80'></td>";
+                echo "<td>" . htmlspecialchars($veiculo['placa']) . "</td>";
+                echo "<td>" . htmlspecialchars($veiculo['modelo']) . "</td>";
+                echo "<td>
+                        <a href='../../admin/html/visu_veiculos.php?id_vei=" . $veiculo['id_vei'] . "' class='aTabela'>Visualizar</a> |
+                        <a href='../../admin/html/edit_veiculos.php?id_vei=" . $veiculo['id_vei'] . "' class='aTabela'>Editar</a> |
+                        <a href='../../admin/html/delete_veiculo.php?id_vei=" . $veiculo['id_vei'] . "' onclick=\"return confirm('Tem certeza que deseja excluir?');\" class='aTabela'>Excluir</a>
+                      </td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='16'>Nenhum veículo encontrado.</td></tr>";
+        }
       ?>
+
     </table>
   </main>
 

@@ -81,11 +81,11 @@ $locacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </div>
           <div class="reserva-img">
             <?php
-              $imgPath = '../img/' . ($loc['imagem_veiculo'] ?: 'default.png');
+              $imgPath = '../php/uploads/' . ($loc['imagem_veiculo'] ?: 'default.png');
             ?>
             <img src="<?= htmlspecialchars($imgPath) ?>" alt="<?= htmlspecialchars($loc['modelo_veiculo']) ?>" />
           </div>
-        </div>
+
       <?php endforeach; ?>
     <?php endif; ?>
   </main>

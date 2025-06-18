@@ -60,7 +60,6 @@ try {
     <li><a href="../../admin/html/Tabela_Veiculos.php">Consultar Veículos</a></li>
     <li><a href="../../admin/html/Tabela_locacao.php">Consultar Locações</a></li>
     <li><a href="../../admin/html/Tabela_Local.php">Consultar Locadoras</a></li>
-    <li><a href="../../admin/html/Catalogo_adm.html">Catálogo</a></li>
   </ul>
 </aside>
 <div class="overlay" id="overlay"></div>

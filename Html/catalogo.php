@@ -32,7 +32,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <title>Catálogo</title>
-  <link rel="stylesheet" href="../Style/catalago.css">
+  <link rel="stylesheet" href="../Style/catalogo.css">
   <script src="../js/catalogo.js"></script>
 </head>
 <body>
@@ -62,7 +62,7 @@ try {
   <div class="catalogo-grid">
     <?php foreach ($veiculos as $veiculo): ?>
       <div class="card-carro">
-        <img src="../../php/uploads/<?= htmlspecialchars($veiculo['imagem']) ?>" alt="<?= htmlspecialchars($veiculo['modelo']) ?>">
+        <img src="../php/uploads/<?= htmlspecialchars($veiculo['imagem']) ?>" alt="<?= htmlspecialchars($veiculo['modelo']) ?>">
         <h3><?= htmlspecialchars($veiculo['modelo']) ?></h3>
         <p>R$<?= number_format($veiculo['preco_dia'], 2, ',', '.') ?> /dia</p>
         
