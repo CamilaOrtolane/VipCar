@@ -5,14 +5,12 @@ require_once 'local_locacao.php';
 $db = (new Database())->getConnection();
 $local = new LocalLocadora($db);
 
-// Verifica se veio via POST (salvar) ou GET (carregar para edição)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $local->id_loc = $_POST['id_loc'];
 } else {
     $local->id_loc = $_GET['id_loc'];
 }
 
-// Busca os dados atuais para exibir no formulário
 $dados = $local->buscarPorId();
 
 if ($_POST) {

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../php/Locação/conexao.php'; // ajuste o caminho conforme seu projeto
+require_once '../php/Locação/conexao.php'; 
 
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.php");

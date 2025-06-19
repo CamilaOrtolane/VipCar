@@ -9,8 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $senha = $_POST['senha'];
 
   if ($usuario === 'admin' && $senha === 'admin123') {
-    $_SESSION['usuario_id'] = 'admin'; // Pode usar um valor fixo para admin
-    header("Location: ../admin/html/home_adm.php"); // Página inicial do admin
+    $_SESSION['usuario_id'] = 'admin'; 
+    header("Location: ../admin/html/home_adm.php"); 
     exit();
   }
 

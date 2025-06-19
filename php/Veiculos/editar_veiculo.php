@@ -5,17 +5,15 @@ require_once 'Veiculos.php';
 $db = (new Database())->getConnection();
 $veiculo = new Veiculo($db);
 
-// Pega o ID do veículo via GET ou POST
+
 $veiculo->id_vei = $_POST['id_vei'] ?? $_GET['id_vei'] ?? null;
 
 if (!$veiculo->id_vei) {
     die("ID do veículo não fornecido.");
 }
 
-// Busca os dados atuais para preencher o formulário
 $dados = $veiculo->buscarPorId();
 
-// Se o formulário foi enviado, atualiza os dados
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $veiculo->nome = $_POST['nome'] ?? '';
     $veiculo->disponibilidade_status = $_POST['disponibilidade_status'] ?? '';

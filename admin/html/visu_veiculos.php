@@ -24,7 +24,7 @@ if (!$dados) {
 <head>
   <meta charset="UTF-8">
   <title>Visualizar Veículo</title>
-  <link rel="stylesheet" href="../Style/Clientes.css"> <!-- Reutilizando o estilo do cliente -->
+  <link rel="stylesheet" href="../Style/Clientes.css"> 
 </head>
 <body>
   <header>
@@ -75,6 +75,6 @@ if (!$dados) {
     <a href="Tabela_Veiculos.php" class="button">← Voltar</a>
   </main>
 
-  <script src="../js/Clientes.js"></script> <!-- Pode ser renomeado se necessário -->
+  <script src="../js/Clientes.js"></script> 
 </body>
 </html>

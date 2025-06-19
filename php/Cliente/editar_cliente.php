@@ -6,9 +6,9 @@ $db = (new Database())->getConnection();
 $cliente = new Cliente($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $cliente->id_cli = $_POST['id_cli'];  // Correto
+    $cliente->id_cli = $_POST['id_cli'];  
 } else {
-    $cliente->id_cli = $_GET['id_cli'];   // Correto ao carregar dados
+    $cliente->id_cli = $_GET['id_cli'];  
 }
 $dados = $cliente->buscarPorId();
 

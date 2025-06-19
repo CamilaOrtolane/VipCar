@@ -1,7 +1,6 @@
 <?php
 require_once '../../php/config/Database.php';
 
-// Verifica se o ID foi fornecido
 $id = $_GET['id_loc'] ?? null;
 
 if (!$id) {

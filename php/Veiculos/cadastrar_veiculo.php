@@ -2,6 +2,9 @@
 require_once '../config/Database.php';
 require_once 'Veiculos.php';
 
+$db = (new Database())->getConnection();
+$veiculo = new Veiculo($db);
+
 $targetDir = "../uploads/";
 if (!file_exists($targetDir)) {
     mkdir($targetDir, 0777, true);
@@ -44,5 +47,4 @@ if ($check !== false && in_array($imageFileType, $allowedTypes)) {
 } else {
     echo "Arquivo inválido. Apenas imagens JPG, PNG, GIF, WEBP são permitidas.";
 }
-
 ?>

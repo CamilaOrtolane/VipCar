@@ -2,7 +2,6 @@
 session_start();
 require_once '../php/Locação/conexao.php';
 
-// Verifica se há usuário logado
 $nome_usuario = $_SESSION['nome'] ?? null;
 
 $locais = $conn->query("SELECT id_loc, rua, cidade FROM local_locadora")->fetchAll(PDO::FETCH_ASSOC);

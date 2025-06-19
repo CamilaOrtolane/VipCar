@@ -1,6 +1,6 @@
 <?php
-require_once 'conexao.php'; // Conexão com o banco
-require_once 'Locacao.php'; // Classe Locacao
+require_once 'conexao.php'; 
+require_once 'Locacao.php'; 
 
 require_once('../../php/config/Database.php');
 
@@ -8,7 +8,6 @@ $db = (new Database())->getConnection();
 
 
 try {
-    // Instanciar a classe Locacao
     $locacao = new Locacao($conn);
 
     $locacao->data_entrada = $_POST['data_entrada'];
